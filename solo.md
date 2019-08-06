@@ -16,7 +16,7 @@
   - You can add 1 string per line.  These are used at the `user` in your mining client
 - Edit `grimm-wallet.cfg` file removing the `#` before `pass` and `node_addr`
   - `pass=abcdefghijklmnopqrstuvwxyz1234567890`
-  - `node_addr=127.0.0.1:10000`
+  - `node_addr=127.0.0.1:10005`
   - Leave the rest as is
 - Initialize wallet by running this command in a terminal
   - `./grimm-wallet init`
@@ -29,11 +29,11 @@
   - Take the key and put in the `grimm-node.cfg` file on the `key_owner=` line
 - Get the `pass` in `grimm-wallet.cfg` and add it to the `pass=` line in `grimm-node.cfg`
 - Add these entries to `grimm-node.cfg`
-  - `port=10000`
+  - `port=10005`
   - `log_level=verbose`
   - `file_log_level=verbose`
   - `mining_threads=0`
-  - `peer=67.205.185.92:8385,165.22.197.90:8385,134.209.157.140:8385,104.248.242.82:8385
+  - `peer=67.205.185.92:8385,165.22.197.90:8385,134.209.157.140:8385,104.248.242.82:8385`
   - `stratum_port=3333`
     - Make sure your firewall is allowing connections to this port if mining externally
   - `stratum_secrets_path=.`
@@ -50,12 +50,12 @@
 - `grimm-wallet.cfg`
 ```
 pass=abcdefghijklmnopqrstuvwxyz1234567890
-node_addr=127.0.0.1:10000
+node_addr=127.0.0.1:10005
 ```
 
 - `grimm-node.cfg`
 ```
-port=10000
+port=10005
 log_level=verbose
 file_log_level=verbose
 mining_threads=0

@@ -59,7 +59,7 @@ In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, a
 - Protocol / MimbleWimble
 - Language / C++
 - Consensus / PoW
-- PoW Algorithm / Equihash 150_5
+- PoW Algorithm / spec. -GrimmPOW base Equihash 150_5
 - Mining / Grimm wallet with built-in GPU and CPU mining (MacOS, Windows, Linux)
 - Emission / Deflationary
 - Block Reward / 100 GRIMM, Rewards halving after 1 year and then halvings every 4 years 33 times in total. All mining

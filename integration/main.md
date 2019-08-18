@@ -4,7 +4,7 @@
 
 Сhoose a branch "[mainnet](https://github.com/freenetcoder/grimm/tree/mainnet)"- it's the latest released version, working with real money. You can get binaries from [Github Releases - Binaries for integration]() or build yourself from the sources.
 
-Detailed instructions on how to build a project for Windows, Linux, Mac platforms you can find [here]().
+Detailed instructions on how to build a project for Windows, Linux, Mac platforms you can find [here](https://github.com/freenetcoder/Manifesto/blob/master/build.md).
 
     Add -DGRIMM_NO_QT_UI_WALLET=On command line parameter to the Cmake if you need only CLI version of the wallet without UI and QT5 library dependencies.
 
@@ -73,7 +73,7 @@ Owner Viewer key: kY9lb6eqWGlcUYG0eAR//fUyXtAuAv4fVfEFfWsTVmFNn++zI73KFpngwNJNig
 ```
 Owner Key should be kept secret. Owner Key does not allow to spend coins, however it will allow to see all coins mined for you by all miners that use this Owner Кey.
 
-Here you can read about all the [grimm-wallet-cli commands]()
+Here you can read about all the [grimm-wallet-cli commands](https://github.com/freenetcoder/Manifesto/blob/master/wallet_cli_commands.md)
 
 ## Starting a Node
 
@@ -92,7 +92,7 @@ List of peers:
 
 ## Mining support
 
-Grimm Node also provides built-in support for Stratum API allowing to connect multiple external mining clients to a single node, read [node mining mode]()
+Grimm Node also provides built-in support for Stratum API allowing to connect multiple external mining clients to a single node, read [node mining mode](https://github.com/freenetcoder/Manifesto/blob/master/node_mining_mode.md)
 
 ## Wallet API
 
@@ -116,7 +116,7 @@ So, to start API with HTTP support use the command:
 $ ./wallet-api --node_addr=x.x.x.x:port --api_use_http=1
 where node_addr is your node address and port.
 ```
-See detailed [wallet API documentation]().
+See detailed [wallet API documentation](https://github.com/freenetcoder/Manifesto/blob/master/api/wallet_api.md).
 
 ## Node Explorer API
 
@@ -126,4 +126,4 @@ To run explorer use the command:
 ```
 $ ./explorer-node --peer ip:port --api_port=8080
 ```
-[See detailed explorer API documentation]()
+[See detailed explorer API documentation](https://github.com/freenetcoder/Manifesto/blob/master/api/explorer_api.md)

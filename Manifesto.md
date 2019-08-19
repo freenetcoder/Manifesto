@@ -90,7 +90,7 @@ In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, a
 - Mining / Grimm wallet with built-in GPU and CPU mining (MacOS, Windows, Linux)
 - Mining pools / [Official PPLNS pool](https://grimm.ravepool.com/)
 - Mining pools / [Friend Sunpool PPLNT](https://grimm.sunpool.top/)
-- External miners / Gminer for Nvidia & AMD (Grimm POW supported from [1.54 ver.](https://github.com/develsoftware/GMinerRelease/releases/tag/1.54) / [MiniZ](https://miniz.ch/features/#mining-algorithm) for Nvidia (supported Grimm)
+- External miners / Gminer for Nvidia & AMD (Grimm POW from [1.54 ver.](https://github.com/develsoftware/GMinerRelease/releases/tag/1.54)) / [MiniZ](https://miniz.ch/features/#mining-algorithm) for Nvidia
 - Emission / Deflationary
 - Block Reward / 100 GRIMM, Rewards halving after 1 year and then halvings every 4 years 33 times in total. All mining
 - rewards go directly to the miners.

@@ -1,6 +1,32 @@
-# Grimm Manifesto
-### NO ONE WILL EVER KNOW
-### Den Novak & Andrew COP
+# Grimm Magic Paper
+"MimbleWimble", we cast this spell so mote it be. GRIMM was born. 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+## NO ONE WILL EVER KNOW
+Den Novak & Andrew COP
+
+
+## Table of contents
+
+- Intro
+- What we see
+- Grimm specifications
+- Grimm tech
+  - Protocol Mimblewimble
+  - [Mimblewimble whitepaper](https://github.com/freenetcoder/Manifesto/blob/master/Mimblewimble_Whitepaper.md)
+  - Cryptographic
+  - Bulletproof
+  - Dandelion ++
+  - Grimm POW Algorithm (base on Equihash 150_5)
+- API
+  - [Wallet API documentation](https://github.com/freenetcoder/Manifesto/blob/master/api/wallet_api.md)
+  - [Explorer API documentation](https://github.com/freenetcoder/Manifesto/blob/master/api/explorer_api.md)
+  - [Mining API stratum](https://github.com/freenetcoder/Manifesto/blob/master/api/mining_api_stratum.md)
+- Guides
+  - [Cli Wallet User Guide](https://github.com/freenetcoder/Manifesto/blob/master/wallet_cli_commands.md)
+  - [Node settings](https://github.com/freenetcoder/Manifesto/blob/master/node_mining_mode.md)
+  - [Solo Mining Guide](https://github.com/freenetcoder/Manifesto/blob/master/solomining.md)
+  - [Integration Grimm guide for exchanges/pools](https://github.com/freenetcoder/Manifesto/blob/master/integration/main.md)
+- Resources
 
 ## Intro
 Speaking at a decentralised Internet conference,  Edward Snowden has warned that Bitcoin’s public ledger is a
@@ -55,12 +81,16 @@ Grimm is based on Baldwin and Clark’s concept of modularity: Breaking a techno
 In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, and adapted in different ways for different systems. Modularity makes it easier to the co-development of the project by our community members, who will proudly be known as "Grimmers".
 
 
-## Grimm spec.
+## Grimm specifications
+
 - Protocol / MimbleWimble
 - Language / C++
 - Consensus / PoW
 - PoW Algorithm / spec. -GrimmPOW base Equihash 150_5
 - Mining / Grimm wallet with built-in GPU and CPU mining (MacOS, Windows, Linux)
+- Mining pools / [Official PPLNS pool](https://grimm.ravepool.com/)
+- Mining pools / [Friend Sunpool PPLNT](https://grimm.sunpool.top/)
+- External miners / Gminer for Nvidia & AMD (Grimm POW supported from [1.54 ver.](https://github.com/develsoftware/GMinerRelease/releases/tag/1.54) / [MiniZ](https://miniz.ch/features/#mining-algorithm) for Nvidia (supported Grimm)
 - Emission / Deflationary
 - Block Reward / 100 GRIMM, Rewards halving after 1 year and then halvings every 4 years 33 times in total. All mining
 - rewards go directly to the miners.
@@ -68,8 +98,6 @@ In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, a
 - Governance / Community
 - Blocktime / 60 sec
 - Block size / 2 Mb
-- Speed / 34 tps
-- Transaction fees / 0
 - Smallest unit / CENTUM (0.00000001 GRIMM)
 
 ## Grimm tech.
@@ -88,6 +116,92 @@ When constructing a valid Mimblewimble transaction, the parties involved need to
 Requiring the interactive participation of both parties in constructing a transaction can be a point of friction in using a Mimblewimble blockchain. In addition to the secure BBS communication channel, GRIMM also plans to support one-sided transactions where the payee in a transaction who expects to be paid a certain amount can construct their half of the transaction and send this half-constructed transaction to the payer.
 
 Grimm make use of a number of Merkle tree structures to keep track of various aspects of the respective blockchains. Details of the exact trees and what they record are documented. GRIMM makes use of a Radix-Hash tree structure for some of its trees. This structure is a modified Merkle tree that is also a binary search tree. This provides a number of features that the standard Merkle trees do not have, and which GRIMM exploits in its implementation.
+
+### Cryptographic
+
+Cryptographic primitives based on the secp256k1 library (like bitcoin). Naturally it uses the same elliptic curve equation. The following primitives are used directly:
+
+    secp256k1_gej - Basic curve point arithmetics: point addition, doubling, negation, import/export to a platform-ndependent format.
+    secp256k1_scalar - Scalar arithmetics: addition, multiplication, inverse
+    secp256k1_sha256_t - SHA-256 hash
+    Cryptographic nonce generation (nonce_function_rfc6979).
+    secp256k1_hmac_sha256_t - HMAC (message authentication)
+
+The following cryptographic functions and schemes are built over them:
+
+    Point multiplication (by a scalar).
+        There are different multiplication modes and scenarios:
+            Secure/Fast
+            Point may be either known in advance (a.k.a. Generator, prepared for multiplication) or "casual".
+            Aggregation: when many points are multiplied by scalars and summed - an appropriate effective algorithm is used.
+        The reason that this functionality is implemented in Grimm and not taken directly from secp256k1 is the following:
+            We'd like to have more low-level control of the primitives to implement advanced schemes
+            We need more generators: Standard secp256k1 supports just two (G,H), whereas we need many more (131)
+            No effective aggregation implementation
+    Commitments (encoded amount with the blinding factor)
+    Schnorr's signatures (including multi-sig)
+    Bulletproofs (including multi-sig and batch verification)
+    Secure communication channels
+    Secure BBS messaging system
+
+The Hash refers to the SHA-256 hash, unless otherwise specified. Used in various schemes. When hashing some data, it's fed in a way that is both platform-independent and unambiguous. This is achieved by the following specifications:
+
+    1-byte data is fed as-is
+    Boolean values are encoded as a single byte with value either 0 or 1.
+    Strings are fed as-is, including the 0-terminator (to prevent ambiguity for consequent strings).
+    Numerical types (fixed-point) are stored as a variable-length byte sequence, with a special terminator mark. This ensures platform independence (integers may have varying width across different platforms).
+    Non-primitive types are converted into the platform-independent binary format for hashing.
+
+The following objects are derived from hash (built over them)
+
+Oracle
+
+Oracle is used in non-interactive cryptographic proofs, it's supposed to produce cryptographic challenges in a deterministic way, based on the visible transcript to the moment.
+
+In Grimm Oracle uses the Hash in a straightforward way. All the visible transcript is hashed. Once the challenge is needed - the hash value is finalized, the result is the challenge, and it's immediately re-fed to the Hash. So that the new challenge construction (if needed) is generated from the visible transcript, including the previous challenge.
+
+If there are restrictions for the challenge (such as it should be non-overflowing, non-zero scalar, or a valid x-coordinate of a curve point) - the Finalize-Re-feed is called in a loop, until the satisfying challenge is produced (i.e. accept/reject strategy is used).
+
+Nonce Generator
+
+Also used in cryptographic proofs, but, unlike Oracle, the nonce generation involves secret data, and should not be possible to reconstruct by others.
+
+In Grimm Nonce generator is a combination of an Oracle, and the nonce function initialized by the secret data. That is, the Oracle accounts for all the visible transcript. When a nonce is needed - first it's received from the Oracle, and then passed as an input to the nonce function (implemented in (secp256k1), which also uses the secret data.
+
+The final nonce generation function implemented in secp256k1 actually a modified HMAC-SHA-256 scheme.
+KDF - Key derivation function
+
+All the private keys are generated via KDF. In Grimm it's implemented via the Nonce generator, which is initialized once by the master secret data. The requested key parameters (key index, type/subtype, etc.) are hashed and then the output is generated by the standard Nonce generator initialized with the master secret.
+Schnorr's signature
+
+Implemented according to the standard, the "long" version, compatible with batch verification. Consists of a pair [P,k], whereas P is an arbitrary EC point, and k is the blinded private key. Supports multisignature of course.
+
+Specifically the scheme is the following. Given a message hash M, private key sk, public key pk = G * sk:
+
+    Prover
+        Generate a nonce nk = Nonce(sk, M), whereas Nonce() is the standard nonce generating function.
+        Calculate: P = nk*G
+        Expose to Oracle: P, M
+        Get the challenge e from Oracle.
+        Calculate k = - nk - e*sk
+        Signature: [P, k]
+    Verifier
+        Expose to Oracle: P, M
+        Get the challenge e from Oracle.
+        Verify: k*G + e*Pk + P == 0
+
+Binary platform-independent representation of the ECC primitives
+
+The following are the primitives:
+
+    ECC Scalar
+        256-bits wide integer, representing the number in a big-endian format (via uintBig)
+        Deserialization ensures the number is indeed a valid scalar, i.e. strictly less than modulo-prime, to prevent ambiguity
+    ECC Point
+        Represented as an X-coordinate, and a Y-parity flag (1 bit).
+        The X-coordinate is serialized via uintBig (similar to scalar).
+        To recover the Y-coordinate one must solve a quadratic equation, which, naturally has 2 solutions. This is where Y-parity flag is used.
+        When serialized individually the data is padded to a byte boundary (means the Y-parity bit takes the whole byte). However in some complex data types those flags are merged and stored separately (Ex: Bulletproofs).
 
 
 ### Bulletproof
@@ -199,8 +313,8 @@ Therefore for performing the algorithm the intended way the slow down by the ext
 By this approach we aim towards forcing the algorithm to follow the same algorithm implementation as done on GPUs or else to use more chipspace and drastically increased power consumption, because performing the Blake2b algorithm is the most power consuming component of Equihash.
 Note that also the verification of solutions get more costly by an average factor of eight. But since only few solutions needs to be verified and due to the still high asymmetry of generation effort compared to verification effort the drawback is acceptable. Overall with this modification the verification of an Equihash 150/5 solution can be done at lower average cost as the verification of an Equihash 200/9 solution while the worst case costs are equal.
 
-### Smart Contracts
-#### to be continued...
+
+#### to be continued (Magic paper v.1.1 under development)
 
 #### Resources
 

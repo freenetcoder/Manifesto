@@ -9,6 +9,7 @@ Den Novak & Andrew COP
 
 - Intro
 - What we see
+- Grimm Direction
 - Grimm specifications
 - Grimm tech
   - Protocol Mimblewimble
@@ -80,6 +81,18 @@ Relisting. Users don't know what they're buying. That's why Grimm supported dece
 Grimm is based on Baldwin and Clark’s concept of modularity: Breaking a technology or process into functionally relevant components facilitates innovation. Modularity (3dparty modules) is a technique used in software development. It breaks a complex technological project into a number of functionally relevant components — integrated in core where is called for, and individually designed where differentiation is needed.
 In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, and adapted in different ways for different systems. Modularity makes it easier to the co-development of the project by our community members, who will proudly be known as "Grimmers".
 
+## Grimm direction
+
+- ASIC resistance as core value
+- FAIR, OPENSOURCE, Community driven coin
+- Anonymous, instant mimblewimble p2p messages not stored in blockchain for secure information transfer
+- p2pool for ultimate mining decentralization
+- mobile wallets for on the go privacy protection
+- blockchain services for easy blockchain interaction
+- smart contracts for discovering new universes
+- atomic swaps for decentralized crosschain exchanges
+- private assetchains based on Grimm blockchain
+- lighting network
 
 ## Grimm specifications
 

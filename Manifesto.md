@@ -9,6 +9,7 @@ Den Novak & Andrew COP
 
 - Intro
 - What we see
+- [Cypherpunk's Manifesto](https://github.com/freenetcoder/Manifesto/blob/master/cypherpunk_manifesto.md)
 - Grimm Direction
 - Grimm specifications
 - Grimm tech

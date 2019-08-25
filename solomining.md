@@ -3,7 +3,7 @@
 - With help from Freshminer and  Mikeyb
 
 ## Installation
-- From [Releases](https://github.com/freenetcoder/grimm/releases/tag/10.1dev) download the following
+- From [Releases](https://github.com/freenetcoder/grimm/releases/tag/10.1dev1) download the following
   - grimm-wallet-cli
   - grimm-node
 - Extract downloads into a folder called `grimm-mining`

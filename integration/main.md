@@ -2,7 +2,7 @@
 
 ## Getting binaries
 
-Сhoose a branch "[mainnet](https://github.com/freenetcoder/grimm/tree/mainnet)"- it's the latest released version, working with real money. You can get binaries from [Github Releases - Binaries for integration]() or build yourself from the sources.
+Сhoose a branch "[mainnet](https://github.com/freenetcoder/grimm/tree/mainnet)"- it's the latest released version, working with real money. You can get binaries from [Github Releases - Binaries for integration](https://github.com/freenetcoder/grimm/releases/tag/10.1dev1) or build yourself from the sources.
 
 Detailed instructions on how to build a project for Windows, Linux, Mac platforms you can find [here](https://github.com/freenetcoder/Manifesto/blob/master/build.md).
 

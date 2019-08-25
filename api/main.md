@@ -1,0 +1,3 @@
+- ## [Wallet API](https://github.com/freenetcoder/Manifesto/blob/master/api/wallet_api.md)
+- ## [Node Explorer API](https://github.com/freenetcoder/Manifesto/blob/master/api/explorer_api.md)
+- ## [Mining protocol API](https://github.com/freenetcoder/Manifesto/blob/master/api/mining_api_stratum.md)

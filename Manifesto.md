@@ -93,7 +93,7 @@ In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, a
 - smart contracts for discovering new universes
 - atomic swaps for decentralized crosschain exchanges
 - private assetchains based on Grimm blockchain
-- lighting network
+- lightning network
 
 ## Grimm specifications
 

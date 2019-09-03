@@ -10,8 +10,10 @@ Den Novak & Andrew COP
 - Intro
 - What we see
 - [Cypherpunk's Manifesto](https://github.com/freenetcoder/Manifesto/blob/master/cypherpunk_manifesto.md)
+- How it works
 - Grimm Direction
 - Grimm specifications
+- [Grimm coins allocation](https://github.com/freenetcoder/Manifesto/blob/master/coins_allocation.md)
 - Grimm tech
   - Protocol Mimblewimble
   - [Mimblewimble whitepaper](https://github.com/freenetcoder/Manifesto/blob/master/Mimblewimble_Whitepaper.md)
@@ -81,6 +83,15 @@ Relisting. Users don't know what they're buying. That's why Grimm supported dece
 
 Grimm is based on Baldwin and Clark’s concept of modularity: Breaking a technology or process into functionally relevant components facilitates innovation. Modularity (3dparty modules) is a technique used in software development. It breaks a complex technological project into a number of functionally relevant components — integrated in core where is called for, and individually designed where differentiation is needed.
 In a Grimm structure,  modules, can easily be addaed or swapped out, upgraded, and adapted in different ways for different systems. Modularity makes it easier to the co-development of the project by our community members, who will proudly be known as "Grimmers".
+
+## How it works
+
+Grimm uses Bitcoin’s Unspent Transaction Output Model (UTXO). According to this model, there are three types of information that must be hidden in order to make a transaction confidential — sender information, recipient information, and transaction amount.
+Mimblewimble protocol (used in GRIMM)itself achieves this goal using the following two encryption methods:
+1. Confidential Transactions: This system was developed by Adam Beck and later continued by Gregory Maxwell. You can hide the values of transaction amounts using homomorphic encryption and blinding factor, where the former is an algorithm that splits the amount of transaction value into several parts, and the latter mixes transaction amounts with random numbers to additionally hide the values of the divided transaction amounts. In addition, in the MW transaction, the recipient receives a range of blinding factors sent by the sender to act as a private key, thus verifying ownership confirmation and completing the transaction.
+2. CoinJoins: This cryptographic technology was also proposed by Gregory Maxwell. The method mixes the transaction pool in such a way that it is impossible to determine who sent the money to whom. In the Mimblewimble scheme, a data block will consist of number of inputs, outputs, and signature data. However, the block can still be validated by subtracting the total inputs from the total outputs to achieving a result of zero. This is a much more efficient system compared to the Bitcoin blockchain, where it is necessary to analyze the whole history of the block to be verified and considered valid. This method also offers significant space savings and offers the execution of multiple transactions at the same time.
+
+But Mimblewimble alone does not counteract all types of blockchain analysis. If implemented naively, Mimblewimble leaves room for peer-to-peer network type analysis, which is very similar to traditional blockchain analysis. That’s why in addition to these MW methods, aggregated transactions as they spread across the network, are combined using Dandelion of peer-to-peer obfuscation technique in Grimm. During the Dandelion stem phase, before the TX’s are broadcast to the P2P layer, they are being combined together (CoinJoin). And an addition to this, Decoy Outputs are used, which are added if necessary. Grimm is fundamentally private. And it’s great! But you can ask — what about transparency? How I can prove a transaction to a third party? Grimm is optionally transparent. Payment Proof feature — a cryptographically secure way to prove that a certain transaction really occurred. You can copy payment proof code from your wallet and give it to someone to check (in another wallet) this transaction details (sender, receiver, amount).
 
 ## Grimm direction
 

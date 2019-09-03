@@ -9,7 +9,7 @@ Grimm is POW coin. All mining rewards go directly to the miners.
   - In years 2–5 block emission = miner reward = 50 Grimm per block.
   - In 6th year reward is reduced to 25 Grimm, and then will halving every 4 years (About 90% of all Grimm's will be issued during the first 13 years).
   
-  Get current circulation supply and network status from API:
+### Get current circulation supply and network status from API:
   
 GET https://explorer.grimmw.com/status
 

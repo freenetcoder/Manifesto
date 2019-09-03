@@ -127,3 +127,25 @@ To run explorer use the command:
 $ ./explorer-node --peer ip:port --api_port=8080
 ```
 [See detailed explorer API documentation](https://github.com/freenetcoder/Manifesto/blob/master/api/explorer_api.md)
+
+## Working API from blockexplorer
+
+GET https://explorer.grimmw.com/status
+
+Description: Gets current blockchain status.
+
+Response:
+```
+{
+"circulation_supply"	4249200,
+"difficulty":	3921971,
+"fee":	0,
+"grimms_per_block":	100,
+"hash":	"f36fec6c9f5d8dcaec7287fb4bef576fbd010f0db3a94bdd10b925d367417628",
+"hashrate":	65366,
+"height":	42492,
+"subsidy":	10000000000,
+"timestamp":	"Tue, 03 Sep 2019 11:13:24 GMT",
+"total_emission":	262800000,
+}
+```

@@ -44,8 +44,8 @@
 - Open another terminal window in `grimm-mining` directory and run the command
   - `./grimm-wallet listen`
   - Leave this terminal open to keep the wallet listening
-- Point your miner at the ip address of this device
-
+- Point your miner at the ip address and port of this device with key from stratum.api.keys instead wallet address
+ 
 ## Config Examples
 - `grimm-wallet.cfg`
 ```

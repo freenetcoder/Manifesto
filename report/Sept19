@@ -1,0 +1,47 @@
+
+I 2019-09-19.05:26:53.983 Rules signature: 0-a296984f83c06247
+I 2019-09-19.05:26:53.983 starting a wallet...
+I 2019-09-19.05:26:54.060 wallet sucessfully opened...
+____Wallet summary____
+
+Current height............65231
+Current state ID..........42f9bc627d9180f6
+
+Available.................3959 grimms 91249206 centum 
+Maturing..................0 centum 
+In progress...............0 centum 
+Unavailable...............0 centum 
+Available coinbase .......0 centum 
+Total coinbase............0 centum 
+Avaliable fee.............0 centum 
+Total fee.................0 centum 
+Total unspent.............3959 grimms 91249206 centum 
+
+  | ID                                               |         grimm |        centum | maturity          | status                        | type   
+    496d3463380e7eeb6e6f726d00000000000000003b9aca00              10               0   60994               [Spent]                         norm     
+    1ee16c55fcabd10c6e6f726d00000000000000003b9aca00              10               0   60996               [Available]                     norm     
+    6d2bca0eb0ddd3286e6f726d00000000000000003b9aca00              10               0   60998               [Available]                     norm     
+    1fa5172b800b43456e6f726d0000000000000002540be400             100               0   61014               [Available]                     norm     
+    18996e286388a7f46e6f726d0000000000000000b2d05e00              30               0   61019               [Available]                     norm     
+    8183601368a780f06e6f726d00000000000000000bebc200               2               0   61068               [Available]                     norm     
+    3f34c1f5af839bd56e6f726d000000000000000005f5e100               1               0   61174               [Available]                     norm     
+    003f36c93f5c406e6e6f726d0000000000000002540be400             100               0   62249               [Available]                     norm     
+    d78c944bd06b9fbf6e6f726d00000000000000003b9aca00              10               0   62289               [Available]                     norm     
+    8964b18da0c8538c6e6f726d00000000000000003b9aca00              10               0   62289               [Available]                     norm     
+    819b7b8dd05b77106e6f726d00000000000000003b9aca00              10               0   62357               [Available]                     norm     
+    ebe09129920e05cd6e6f726d0000000000000005d21dba00             250               0   62372               [Available]                     norm     
+    f15dcaad68b720986e6f726d000000000000000a91cf4e5f             453        95955295   62384               [Available]                     norm     
+    df5200490d6e77b86e6f726d00000000000000005f5e1000              16               0   62626               [Available]                     norm     
+    6a14b312d792aac96e6f726d0000000000000002540be400             100               0   62746               [Available]                     norm     
+    685fca0141e126c06e6f726d00000000000000174876e800            1000               0   62942               [Available]                     norm     
+    825000999ca54b7f6e6f726d000000000000000d1790fd1f             562        29952799   62991               [Available]                     norm     
+    d91970b82f611f346e6f726d000000000000000023c34600               6               0   63000               [Available]                     norm     
+    60d5953f274c4ce06e6f726d000000000000000df8475800             600               0   63063               [Available]                     norm     
+    abcaddc54fa4b9166e6f726d00000000000000005f5e1000              16               0   63075               [Available]                     norm     
+    4142e19b36f16cd36e6f726d00000000000000005f5e1000              16               0   63080               [Available]                     norm     
+    2c71a5afadb677236e6f726d0000000000000003e61b9731             167        45469745   63133               [Available]                     norm     
+    219cd73482622b056e6f726d00000000000000003b9aca00              10               0   63938               [Available]                     norm     
+    df69739cdee467f06e6f726d00000000000000005f5e1000              16               0   63978               [Available]                     norm     
+    1fb7b83460e43bda6e6f726d00000000000000095a6d2897             401        71808919   63986               [Available]                     norm     
+    dfd3ec0fb4f8c1866e6f726d00000000000000003b9aca00              10               0   64150               [Available]                     norm     
+    af6afe0fc074c5d66e6f726d000000000000000132d932f0              51        48062448   64341               [Available]                     norm     

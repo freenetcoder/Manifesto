@@ -1,6 +1,9 @@
+run ./explorer-node
+
 ## API
 ### status
-GET https://freenetcoder.com/status
+
+localhost:8888/status
 
 Description: Gets current blockchain status.
 
@@ -15,11 +18,11 @@ Response:
 }
 ### block
 
-GET https://freenetcoder.com/block?height={height}
+localhost:8888/block?height={height}
 or
-GET https://freenetcoder.com/block?hash={hash}
+localhost:8888/block?hash={hash}
 or
-GET https://freenetcoder.com/block?kernel={kernel}
+localhost:8888/block?kernel={kernel}
 
 Description: Gets block info for specified height, hash or kernel.
 
@@ -54,6 +57,6 @@ Response:
  -  "timestamp": 1565015507
 }
 ### blocks
-GET http://freenetcoder.com/blocks?height={start}&n={count}
+localhost:8888/blocks?height={start}&n={count}
 
 Description: Gets blocks info for specified range, where count should be <= 1500.

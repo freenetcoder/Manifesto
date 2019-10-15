@@ -14,7 +14,13 @@ Linux: /home/{your User name}/.local/share/Grimm Wallet Mainnet/{current ver. li
 3. Install and run new wallet.
 
 4. Choose "auto migration" button to automatically update from last wallet (then click "next") or "select wallet 
-database file manually" (if wallet.db is stored by not default path). The migration is done.
+database file manually" (if wallet.db stored in a non-default folder). The migration is done.
+
+![](1mg.png)
+
+![](2mg.png)
 
 5. Choose Light wallet (remote node) or Full node wallet and enter the password.
+
+![](3mg.png)
 

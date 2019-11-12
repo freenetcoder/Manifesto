@@ -2,7 +2,7 @@
 
 ## Getting binaries
 
-Сhoose a branch "[assetchain](https://github.com/freenetcoder/grimm/tree/assetchain)"- it's the latest released version with support CAC. You can get binaries from [Github Releases - assetchains impl pre-release]() or build yourself from the sources.
+Сhoose a branch "[assetchain](https://github.com/freenetcoder/grimm/tree/assetchain)"- it's the latest released version with support CAC. You can get binaries from [Github Releases - Assetchains init pre-release ](https://github.com/freenetcoder/grimm/releases/tag/CAC_10_3) or build yourself from the sources.
 
 Detailed instructions on how to build a project for Windows, Linux, Mac platforms you can find [here](https://github.com/freenetcoder/Manifesto/blob/master/build.md).
 

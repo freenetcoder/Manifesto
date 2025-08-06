@@ -1,3 +1,7 @@
+CMC socials update request #1150205:
+
+Delete current socials and grimm website. New links will be available after core upgrade.
+
 # Grimm Magic Paper
 "MimbleWimble", we cast this spell so mote it be. GRIMM was born. 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
